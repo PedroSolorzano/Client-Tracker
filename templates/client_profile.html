@@ -28,14 +28,14 @@
 </head>
 
 <body class="g-sidenav-show bg-gray-100">
-  
+
   {% block sidebar %}
-  
+
   <div class="position-absolute w-100 min-height-300 top-0" style="background-image: url('https://raw.githubusercontent.com/creativetimofficial/public-assets/master/argon-dashboard-pro/assets/img/profile-layout-header.jpg'); background-position-y: 50%;">
     <span class="mask bg-primary opacity-6"></span>
   </div>
   {% include 'sidebar.html' %}
-  
+
   {% endblock %}
 
   {% block main %}
@@ -169,10 +169,10 @@
           <div class="col-auto my-auto">
             <div class="h-100">
               <h5 class="mb-1">
-                {{ current_user.name }}
+                Sayo Kravits
               </h5>
               <p class="mb-0 font-weight-bold text-sm">
-                Sales
+                Public Relations
               </p>
             </div>
           </div>
@@ -219,7 +219,7 @@
                 <div class="col-md-6">
                   <div class="form-group">
                     <label class="form-control-label">Username</label>
-                    <input class="form-control" type="text" value="{{ current_user.name.spilt()[0] }}">
+                    <input class="form-control" type="text" value="{{ current_user.name }}">
                   </div>
                 </div>
                 <div class="col-md-6">
@@ -374,7 +374,7 @@
     </div>
   </div>
   {% endblock %}
-  
+
   <div class="fixed-plugin">
     <a class="fixed-plugin-button text-dark position-fixed px-3 py-2">
       <i class="fa fa-cog py-2"> </i>
