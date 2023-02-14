@@ -21,3 +21,4 @@ visitor
 Werkzeug
 WTForms
 psycopg2-binary
+bcrypt

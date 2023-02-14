@@ -64,6 +64,14 @@
             <span class="nav-link-text ms-1">Sign In</span>
           </a>
         </li>
+        <li class="nav-item" style="{% if current_user.id not in session %}display:none{% endif %}">
+          <a class="nav-link" href="{{ url_for('logout') }}">
+            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="ni ni-key-25 text-danger text-sm opacity-10"></i>
+            </div>
+            <span class="nav-link-text ms-1">Logout</span>
+          </a>
+        </li>
         <li class="nav-item">
           <a class="nav-link " href="{{ url_for('register_page') }}">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
