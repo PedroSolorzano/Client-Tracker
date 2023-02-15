@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, url_for, flash, request, abort, session
+from flask import Flask, render_template, redirect, url_for, flash, request
 from flask_bootstrap import Bootstrap
 from flask_ckeditor import CKEditor
 from datetime import date
@@ -99,14 +99,21 @@ def load_user(user_id):
 
 
 @app.route('/')
+@login_required
 def home_page():
-    return render_template('index.html')
+    return render_template('index.html', logged_in=current_user.is_authenticated)
+
+
+@app.route('/clients')
+@login_required
+def client_page():
+    return render_template('clients.html', logged_in=current_user.is_authenticated)
 
 
 @app.route('/billing')
 @fresh_login_required
 def billing_page():
-    return render_template('billing.html')
+    return render_template('billing.html', logged_in=current_user.is_authenticated)
 
 
 @app.route('/profile', methods=['GET', 'POST'])
@@ -124,10 +131,15 @@ def profile_page():
         taken_email = User.query.filter(email=user_form.email.data).first()
         if not taken_email:
             user.email = user_form.email.data
-        return redirect(url_for('profile.html', form=user_form))
+            # Commit to database
+            db.session.commit()
+        else:
+            # Commit to database
+            db.session.commit()
+        return redirect(url_for('profile_page', form=user_form, logged_in=current_user.is_authenticated))
     elif request.method == 'POST' and user_form.cancel.data:
-        return redirect(url_for('profile.html', form=user_form))
-    return render_template('profile.html', form=user_form)
+        return redirect(url_for('profile_page', form=user_form, logged_in=current_user.is_authenticated))
+    return render_template('profile.html', form=user_form, logged_in=current_user.is_authenticated)
 
 
 @app.route('/register', methods=['GET', 'POST'])
@@ -186,11 +198,6 @@ def logout():
         return redirect(url_for('login_page', logged_in=current_user.is_authenticated))
     else:
         return redirect(url_for('login_page', logged_in=current_user.is_authenticated))
-
-
-@app.route('/clients')
-def client_page():
-    return render_template('clients.html')
 
 
 if __name__ == "__main__":

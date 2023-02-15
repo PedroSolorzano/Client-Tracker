@@ -9241,6 +9241,7 @@ fieldset:disabled .btn {
 .mx-4 {
   margin-right: 1.5rem !important;
   margin-left: 1.5rem !important;
+  margin-top: 1.5rem !important;
 }
 
 .mx-5 {
@@ -10185,11 +10186,19 @@ fieldset:disabled .btn {
 }
 
 .pe-2 {
-  padding-right: 0.5rem !important;
+  padding-left: 1rem !important;
+}
+
+.pe-2:hover {
+  color: '#0d6efd' !important;
 }
 
 .pe-3 {
   padding-right: 1rem !important;
+}
+
+.pe-3:hover {
+  color: '#0d6efd' !important;
 }
 
 .pe-4 {
@@ -10297,7 +10306,7 @@ fieldset:disabled .btn {
 }
 
 .ps-4 {
-  padding-left: 1.5rem !important;
+  padding-left: 0 !important;
 }
 
 .ps-5 {

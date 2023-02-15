@@ -29,11 +29,14 @@
 </head>
 
 <body class="">
-  <!-- Navbar -->
-  {% block sidebar %}
-  {% include 'sidebar.html' %}
+
+  {% block header %}
+  {% if logged_in %}
+  {% include 'navbar.html' %}
+  <div class="min-height-300 bg-primary position-absolute w-100"></div>
+  {% endif %}
   {% endblock %}
-  <!-- End Navbar -->
+
   {% block main %}
   <main class="main-content  mt-0">
     <div class="page-header align-items-start min-vh-50 pt-5 pb-11 m-3 border-radius-lg" style="background-image: url('https://raw.githubusercontent.com/creativetimofficial/public-assets/master/argon-dashboard-pro/assets/img/signup-cover.jpg'); background-position: top;">
