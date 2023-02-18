@@ -97,14 +97,14 @@
                   <div class="col-md-4">
                     <div class="form-group">
                       <label class="form-control-label">{{ form.username.label }}</label>
-                        {{ form.first_name(class="form-control", value=current_user.username) }}
+                        {{ form.username(class="form-control", value=current_user.username) }}
                     </div>
                   </div>
                   <div class="col-md-4">
                     <div class="form-group">
                       <label class="form-control-label">{{ form.first_name.label }}</label>
                       {% if current_user.first_name is not none %}
-                        {{ form.first_name(class="form-control", value=current_user.first_name) }}
+                        {{ form.first_name(class="form-control", value='hello there') }}
                       {% else %}
                         {{ form.first_name(class="form-control") }}
                       {% endif %}
@@ -122,8 +122,29 @@
                   </div>
                 </div>
                 <!-- Add additional fields here -->
-                {{ form.submit(class="btn btn-success") }}
-                {{ form.cancel(class="btn btn-danger") }}
+                <div class="row">
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label class="form-control-label">{{ form.email.label }}</label>
+                        {{ form.email(class="form-control", value=current_user.email) }}
+                    </div>
+                  </div>
+                  <div class="col-md-8">
+                    <div class="form-group">
+                      <label class="form-control-label">{{ form.about_me.label }}</label>
+                        {% if current_user.about_me is not none %}
+                          {{ form.about_me(class="form-control", value=current_user.about_me) }}
+                        {% else %}
+                          {{ form.about_me(class="form-control") }}
+                        {% endif %}
+                    </div>
+                  </div>
+                </div>
+                <hr>
+                <div>
+                  {{ form.submit(class="btn btn-success float-end") }}
+                  {{ form.cancel(class="btn btn-danger float-end mx-2") }}
+                </div>
               </div>
             </form>
           </div>
