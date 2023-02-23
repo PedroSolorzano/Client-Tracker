@@ -13,6 +13,7 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 -->
 {% extends 'base.html' %}
+{% import 'bootstrap/wtf.html' as wtf %}
 
 
 <html lang="en">
@@ -90,14 +91,14 @@
                 <a href="#" class="btn btn-primary btn-sm ms-auto">Edit Profile</a>
               </div>
             </div>
-            <form action="" method="post">
+            <form action="/profile" method="post">
               <div class="card-body">
                 <p class="text-uppercase text-sm">User Information</p>
                 <div class="row">
                   <div class="col-md-4">
                     <div class="form-group">
                       <label class="form-control-label">{{ form.username.label }}</label>
-                        {{ form.first_name(class="form-control", value=current_user.username) }}
+                        {{ form.username(class="form-control", value=current_user.username) }}
                     </div>
                   </div>
                   <div class="col-md-4">
@@ -122,10 +123,34 @@
                   </div>
                 </div>
                 <!-- Add additional fields here -->
-                {{ form.submit(class="btn btn-success") }}
-                {{ form.cancel(class="btn btn-danger") }}
+                <div class="row">
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label class="form-control-label">{{ form.email.label }}</label>
+                        {{ form.email(class="form-control", value=current_user.email) }}
+                    </div>
+                  </div>
+                  <div class="col-md-8">
+                    <div class="form-group">
+                      <label class="form-control-label">{{ form.about_me.label }}</label>
+                        {% if current_user.about_me is not none %}
+                          {{ form.about_me(class="form-control", value=current_user.about_me) }}
+                        {% else %}
+                          {{ form.about_me(class="form-control") }}
+                        {% endif %}
+                    </div>
+                  </div>
+                </div>
+                <hr>
+                <div>
+                  {{ form.submit(class="btn btn-success float-end") }}
+                  {{ form.cancel(class="btn btn-danger float-end mx-2") }}
+                </div>
               </div>
             </form>
+            <div>
+              {{ wtf.quick_form(form, novalidate=True) }}
+            </div>
           </div>
         </div>
       </div>
