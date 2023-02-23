@@ -105,7 +105,7 @@
                     <div class="form-group">
                       <label class="form-control-label">{{ form.first_name.label }}</label>
                       {% if current_user.first_name is not none %}
-                        {{ form.first_name(class="form-control", value=current_user.first_name) }}
+                        {{ form.first_name(class="form-control", value='hello there') }}
                       {% else %}
                         {{ form.first_name(class="form-control") }}
                       {% endif %}
